@@ -8,7 +8,7 @@ GPIO.setup(18,GPIO.OUT)
 try:
     while True:
         GPIO.output(18,1)
-        time.sleep(0.0025)
+        time.sleep(0.0015)
         GPIO.output(18,0)
 
         time.sleep(2)
