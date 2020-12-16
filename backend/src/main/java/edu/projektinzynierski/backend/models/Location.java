@@ -1,6 +1,6 @@
 package edu.projektinzynierski.backend.models;
 
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,12 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Data
-public class TempHistory {
-
+public class Location {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -22,11 +20,11 @@ public class TempHistory {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID uuid;
 
-  private Integer temp;
+  private String locationName;
 
   @ManyToOne
-  private Device device;
+  private Location locationGroup;
 
-  @CreationTimestamp
-  private LocalDateTime getAt;
+  @OneToMany(mappedBy = "location")
+  private List<Device> devicesInLocation;
 }
