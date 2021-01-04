@@ -1,4 +1,4 @@
-package edu.projektinzynierski.backend;
+package edu.projektinzynierski.backend.hardware;
 
 import com.pi4j.component.temperature.TemperatureSensor;
 import com.pi4j.component.temperature.impl.TmpDS18B20DeviceType;
@@ -9,12 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinDigitalInput;
-import com.pi4j.io.gpio.PinPullResistance;
-import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.w1.W1Master;
 
 @Component
@@ -55,6 +49,7 @@ public class DataReader implements CommandLineRunner {
         //this line is enough if you want to read the temperature
         logger.info("Device: "+device.getId().replace("\n","")+" Temperature: " + ((TemperatureSensor) device).getTemperature());
         //returns the temperature as double rounded to one decimal place after the point
+        //TODO Upload data to kafka stream
         Thread.sleep(5000);
 
       }
