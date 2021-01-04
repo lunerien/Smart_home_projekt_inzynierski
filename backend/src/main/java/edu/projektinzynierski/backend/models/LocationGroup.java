@@ -26,4 +26,7 @@ public class LocationGroup {
 
   @OneToMany(mappedBy = "locationGroup")
   private List<Location> locationsInGroup;
+
+  @OneToMany(mappedBy = "locationGroup")
+  private List<UserLocationGroup> usersLocationGroups;
 }

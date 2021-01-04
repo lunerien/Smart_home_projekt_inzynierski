@@ -1,19 +1,19 @@
 package edu.projektinzynierski.backend.models;
 
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.UUID;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Data
-public class Location {
+public class ConnectedUsers {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -21,12 +21,15 @@ public class Location {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID uuid;
 
-  @Column(nullable = false)
-  private String locationName;
+  @ManyToOne(optional = false)
+  private User user1;
 
   @ManyToOne(optional = false)
-  private Location locationGroup;
+  private User user2;
 
-  @OneToMany(mappedBy = "location")
-  private List<Device> devicesInLocation;
+  @CreationTimestamp
+  private LocalDateTime createdAt;
+
+  @UpdateTimestamp
+  private LocalDateTime updatedAt;
 }
