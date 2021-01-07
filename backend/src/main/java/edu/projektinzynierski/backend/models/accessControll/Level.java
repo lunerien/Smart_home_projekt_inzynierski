@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public enum Level {
-  USER(0),ADMIN(1);
+  USER(0),
+  ADMIN(1);
   private final int level;
 }

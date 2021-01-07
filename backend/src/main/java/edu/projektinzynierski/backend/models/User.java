@@ -35,11 +35,9 @@ public class User {
   @Column(nullable = false)
   private Level level;
 
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  @CreationTimestamp private LocalDateTime createdAt;
 
-  @UpdateTimestamp
-  private LocalDateTime updatedAt;
+  @UpdateTimestamp private LocalDateTime updatedAt;
 
   @OneToMany(mappedBy = "user")
   private List<UserLocationGroup> usersLocationGroup;

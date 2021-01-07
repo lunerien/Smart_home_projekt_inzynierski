@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -24,9 +23,7 @@ public class TempHistory {
 
   private Integer temp;
 
-  @ManyToOne
-  private Device device;
+  @ManyToOne private Device device;
 
-  @CreationTimestamp
-  private LocalDateTime getAt;
+  @CreationTimestamp private LocalDateTime getAt;
 }

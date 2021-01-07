@@ -27,7 +27,4 @@ public class UserLocation {
 
   @Column(nullable = false)
   private Integer permissionLevel;
-
-
-
 }

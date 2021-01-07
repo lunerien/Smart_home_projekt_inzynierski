@@ -30,14 +30,11 @@ public class Device {
   @Column(nullable = false)
   private String type;
 
-  @ManyToOne
-  private Location location;
+  @ManyToOne private Location location;
 
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  @CreationTimestamp private LocalDateTime createdAt;
 
-  @UpdateTimestamp
-  private LocalDateTime updatedAt;
+  @UpdateTimestamp private LocalDateTime updatedAt;
 
   @OneToMany(mappedBy = "device")
   private List<TempHistory> tempHistoryForThisDevice;

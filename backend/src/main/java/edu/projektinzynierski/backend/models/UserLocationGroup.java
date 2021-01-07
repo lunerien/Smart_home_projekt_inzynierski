@@ -34,9 +34,7 @@ public class UserLocationGroup {
   @Column(nullable = false)
   private PermissionLevel permissionLevel;
 
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  @CreationTimestamp private LocalDateTime createdAt;
 
-  @UpdateTimestamp
-  private LocalDateTime updatedAt;
+  @UpdateTimestamp private LocalDateTime updatedAt;
 }
