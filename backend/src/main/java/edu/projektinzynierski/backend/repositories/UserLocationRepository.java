@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserLocationRepository extends CrudRepository<UserLocation,Integer> {
+public interface UserLocationRepository extends CrudRepository<UserLocation, Integer> {
   Optional<UserLocation> findByUuid(UUID uuid);
 }
