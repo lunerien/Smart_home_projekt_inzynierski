@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DeviceAlreadyExistsException extends EntityAlreadyExistsException {
 
   private static final long serialVersionUID = -3088026712242500807L;
-  private final String uuid;
+  private final String deviceId;
 
-  public DeviceAlreadyExistsException(String uuid) {
-    super("Device with UUID: ["+uuid+"]");
-    this.uuid = uuid;
+  public DeviceAlreadyExistsException(String deviceId) {
+    super("Device with deviceId: [" + deviceId + "]");
+    this.deviceId = deviceId;
   }
 }

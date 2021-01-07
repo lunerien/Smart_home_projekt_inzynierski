@@ -14,7 +14,7 @@ public class UserLocationNotFoundException extends EntityNotFoundException {
   private final String uuid;
 
   public UserLocationNotFoundException(String uuid) {
-    super("UserLocation with UUID: ["+uuid+"]");
+    super("UserLocation with UUID: [" + uuid + "]");
     this.uuid = uuid;
   }
 }

@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Getter
 @ResponseStatus(HttpStatus.CONFLICT)
 @EqualsAndHashCode(callSuper = true)
-public class UserLocationAlreadyExistsException extends EntityAlreadyExistsException{
+public class UserLocationAlreadyExistsException extends EntityAlreadyExistsException {
 
   private static final long serialVersionUID = -693246513451783102L;
   private final String uuid;
 
   public UserLocationAlreadyExistsException(String uuid) {
-    super("UserLocation with UUID: ["+uuid+"]");
+    super("UserLocation with UUID: [" + uuid + "]");
     this.uuid = uuid;
   }
 }

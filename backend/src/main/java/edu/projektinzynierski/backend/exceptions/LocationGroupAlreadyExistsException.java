@@ -14,7 +14,7 @@ public class LocationGroupAlreadyExistsException extends EntityAlreadyExistsExce
   private final String uuid;
 
   public LocationGroupAlreadyExistsException(String uuid) {
-    super("LocationGroup with UUID: ["+uuid+"]");
+    super("LocationGroup with UUID: [" + uuid + "]");
     this.uuid = uuid;
   }
 }

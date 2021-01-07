@@ -14,8 +14,7 @@ public class ConnectedUsersAlreadyExistsException extends EntityAlreadyExistsExc
   private final String uuid;
 
   public ConnectedUsersAlreadyExistsException(String uuid) {
-    super("ConnectedUsers with UUID: ["+uuid+"]");
+    super("ConnectedUsers with UUID: [" + uuid + "]");
     this.uuid = uuid;
   }
-
 }

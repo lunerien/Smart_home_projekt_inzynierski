@@ -20,6 +20,4 @@ public abstract class EntityNotFoundException extends BusinessException {
   public ErrorCode getErrorCode() {
     return ErrorCode.RESOURCE_NOT_FOUND;
   }
-
-
 }

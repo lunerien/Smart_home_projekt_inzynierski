@@ -14,7 +14,7 @@ public class LocationGroupNotFoundException extends EntityNotFoundException {
   private final String uuid;
 
   public LocationGroupNotFoundException(String uuid) {
-    super("Location group with UUID: [" + uuid+"]");
+    super("Location group with UUID: [" + uuid + "]");
     this.uuid = uuid;
   }
 }
