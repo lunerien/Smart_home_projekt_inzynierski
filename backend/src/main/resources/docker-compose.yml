@@ -4,7 +4,7 @@ services:
     image: efrecon/websockify
     ports:
       - "8090:8090"
-    command: ['8090', '192.168.2.125:5900']
+    command: [ '8090', '192.168.2.125:5900' ]
 
   zookeeper:
     image: adamoss/rpi-zookeeper
