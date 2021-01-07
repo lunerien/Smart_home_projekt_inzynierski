@@ -7,5 +7,5 @@ public class DeviceRequest {
   private String uuid;
   private String deviceId;
   private String type;
-  private String location;
+  private String locationUuid;
 }
