@@ -1,5 +1,6 @@
 package edu.projektinzynierski.backend.exceptions;
 
+import java.util.UUID;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -11,10 +12,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DeviceNotFoundException extends EntityNotFoundException {
 
   private static final long serialVersionUID = 363296846762830931L;
-  private final String uuid;
+  private final UUID uuid;
+  private final String deviceId;
 
-  public DeviceNotFoundException(String uuid) {
-    super("Device with UUID: [" + uuid + "]");
+  public DeviceNotFoundException(UUID uuid) {
+    super("Device with UUID: [" + uuid.toString() + "]");
     this.uuid = uuid;
+    this.deviceId = null;
+  }
+
+  public DeviceNotFoundException(String deviceId) {
+    super("Device with Id: [" + deviceId + "]");
+    this.uuid = null;
+    this.deviceId = deviceId;
   }
 }
