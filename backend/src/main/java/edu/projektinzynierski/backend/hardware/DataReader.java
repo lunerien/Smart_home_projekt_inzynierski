@@ -6,33 +6,22 @@ import com.pi4j.io.w1.W1Device;
 import com.pi4j.io.w1.W1Master;
 import java.io.IOException;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class DataReader implements CommandLineRunner {
   Logger logger = LoggerFactory.getLogger(DataReader.class);
 
+  private final KafkaTemplate<String, String> template;
+
   @Override
   public void run(String... args) throws Exception {
-    /* Initialize pi4j */
-    //    final GpioController gpio = GpioFactory.getInstance();
-    //
-    //        /* Initialize GPIO 0 as an input pin called "MyButton" and set
-    //           it low using the pull-down resistor.
-    //        */
-    //    GpioPinDigitalInput myButton =
-    //        gpio.provisionDigitalInputPin(RaspiPin.GPIO_00,
-    //            "MyButton",
-    //            PinPullResistance.PULL_DOWN);
-    //
-    //    /* Read the state (high or low) of the pin. Remember, it should be "low" */
-    //    PinState pinState = myButton.getState();
-    //    System.out.println("GPIO 0 is set to " + pinState.getName());
-    /* Close all open connections. */
-    // gpio.shutdown();
     W1Master master = new W1Master();
     List<W1Device> w1Devices = master.getDevices(TmpDS18B20DeviceType.FAMILY_CODE);
 
@@ -47,15 +36,15 @@ public class DataReader implements CommandLineRunner {
 
     while (true) {
       for (W1Device device : w1Devices) {
-        // this line is enough if you want to read the temperature
-        logger.info(
-            "Device: "
-                + device.getId().replace("\n", "")
-                + " Temperature: "
-                + ((TemperatureSensor) device).getTemperature());
-        // returns the temperature as double rounded to one decimal place after the point
-        // TODO Upload data to 2 kafka streams
+
+        String key = device.getId().replace("\n", "");
+        String value = String.valueOf(((TemperatureSensor) device).getTemperature());
         Thread.sleep(5000);
+        try {
+          this.template.send("tempHistory", key, value);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
     }
   }
