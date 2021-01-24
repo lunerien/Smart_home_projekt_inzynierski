@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DeviceRepository extends CrudRepository<Device, Integer> {
   Optional<Device> findByUuid(UUID uuid);
+
   Optional<Device> findByDeviceId(String deviceId);
 }

@@ -9,4 +9,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
   Optional<User> findByUuid(UUID uuid);
+
+  Boolean existsByUuid(UUID uuid);
+
+  Boolean existsByLogin(String login);
+
+  Optional<User> findByLogin(String login);
 }
