@@ -9,23 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 public class Location {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(insertable = false, updatable = false, columnDefinition = "serial")
+  @GeneratedValue()
   private UUID uuid;
 
   @Column(nullable = false)
   private String locationName;
 
   @ManyToOne(optional = false)
-  private Location locationGroup;
+  private LocationGroup locationGroup;
 
   @OneToMany(mappedBy = "location")
   private List<Device> devicesInLocation;
