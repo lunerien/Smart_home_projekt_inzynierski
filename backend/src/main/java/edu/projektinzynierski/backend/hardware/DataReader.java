@@ -28,12 +28,10 @@ public class DataReader implements CommandLineRunner {
     for (W1Device device : w1Devices) {
       try {
         logger.info("1-Wire ID: " + device.getId() + " value: " + device.getValue());
-        // returns the ID of the Sensor and the  full text of the virtual file
       } catch (IOException e) {
         e.printStackTrace();
       }
     }
-
     while (true) {
       for (W1Device device : w1Devices) {
 
