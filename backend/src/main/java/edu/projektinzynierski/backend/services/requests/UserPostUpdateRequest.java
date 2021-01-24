@@ -1,9 +1,13 @@
 package edu.projektinzynierski.backend.services.requests;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class UserPostUpdateRequest {
+@Builder
+public class UserPostUpdateRequest extends UserAccessRequest {
   private String uuid;
   private String login;
   private String level;
